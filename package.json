@@ -1,0 +1,21 @@
+{
+  "name": "spendbook",
+  "version": "3.0.0",
+  "private": true,
+  "description": "Dakhl o Kharj / \u062f\u062e\u0644 \u0648 \u062e\u0631\u062c",
+  "scripts": {
+    "android:add": "cap add android && python3 tools/prepare_android.py && cap sync android",
+    "android:sync": "cap sync android"
+  },
+  "dependencies": {
+    "@capacitor/android": "^8.6.0",
+    "@capacitor/app": "^8.1.2",
+    "@capacitor/core": "^8.6.0",
+    "@capacitor/filesystem": "^8.1.5",
+    "@capacitor/local-notifications": "^8.0.0",
+    "@capacitor/share": "^8.0.3"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^8.6.0"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "appId": "ir.kharjnegar.app",
+  "appName": "Dakhl o Kharj",
+  "webDir": "docs",
+  "backgroundColor": "#fff8e1",
+  "android": {
+    "allowMixedContent": false
+  },
+  "server": {
+    "androidScheme": "https"
+  },
+  "plugins": {
+    "LocalNotifications": {
+      "smallIcon": "ic_stat_notify",
+      "iconColor": "#E8764F"
+    }
+  }
+}
