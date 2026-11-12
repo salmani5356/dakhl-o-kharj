@@ -1,6 +1,6 @@
 /* سرویس‌ورکر خرج‌نگار: همه‌چیز را کش می‌کند تا کاملاً آفلاین کار کند.
    هر بار index.html عوض شد، عدد VERSION را بالا ببر تا گوشی نسخهٔ جدید را بگیرد. */
-const VERSION = 'spendbook-v3-5';
+const VERSION = 'spendbook-v3-6';
 const FILES = [
   './', './index.html', './manifest.webmanifest',
   './icons/icon-192.png', './icons/icon-512.png', './icons/maskable-512.png',
