@@ -33,8 +33,9 @@ if "// SPENDBOOK-PATCH" not in s:
     }
 '''
     s = s.replace("    defaultConfig {", signing + "    defaultConfig {", 1)
-    s = re.sub(r"versionCode \d+", 'versionCode (System.getenv("VERSION_CODE") ?: "1").toInteger()', s, count=1)
-    s = re.sub(r'versionName "[^"]*"', 'versionName (System.getenv("VERSION_NAME") ?: "1.0")', s, count=1)
+        s = re.sub(r"versionCode \d+", 'versionCode Integer.parseInt(System.getenv("VERSION_CODE") ?: "1")', s, count=1)
+    s = re.sub(r'versionName "[^"]*"', 'versionName "" + (System.getenv("VERSION_NAME") ?: "1.0")', s, count=1)
+    
     s = s.replace("        release {\n            minifyEnabled false",
                   "        release {\n            if (System.getenv(\"KEYSTORE_FILE\") && System.getenv(\"KEYSTORE_PASSWORD\") && System.getenv(\"KEY_ALIAS\") && System.getenv(\"KEY_PASSWORD\")) { signingConfig signingConfigs.release }\n            minifyEnabled false", 1)
     assert "signingConfig signingConfigs.release" in s, "anchor release{} not found"
