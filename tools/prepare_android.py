@@ -23,7 +23,7 @@ if "// SPENDBOOK-PATCH" not in s:
     // SPENDBOOK-PATCH: امضا از متغیرهای محیطی
     signingConfigs {
         release {
-            if (System.getenv("KEYSTORE_FILE")) {
+            if (System.getenv("KEYSTORE_FILE") && System.getenv("KEYSTORE_PASSWORD") && System.getenv("KEY_ALIAS") && System.getenv("KEY_PASSWORD")) {
                 storeFile file(System.getenv("KEYSTORE_FILE"))
                 storePassword System.getenv("KEYSTORE_PASSWORD")
                 keyAlias System.getenv("KEY_ALIAS")
@@ -36,7 +36,7 @@ if "// SPENDBOOK-PATCH" not in s:
     s = re.sub(r"versionCode \d+", 'versionCode (System.getenv("VERSION_CODE") ?: "1").toInteger()', s, count=1)
     s = re.sub(r'versionName "[^"]*"', 'versionName (System.getenv("VERSION_NAME") ?: "1.0")', s, count=1)
     s = s.replace("        release {\n            minifyEnabled false",
-                  "        release {\n            if (System.getenv(\"KEYSTORE_FILE\")) { signingConfig signingConfigs.release }\n            minifyEnabled false", 1)
+                  "        release {\n            if (System.getenv(\"KEYSTORE_FILE\") && System.getenv(\"KEYSTORE_PASSWORD\") && System.getenv(\"KEY_ALIAS\") && System.getenv(\"KEY_PASSWORD\")) { signingConfig signingConfigs.release }\n            minifyEnabled false", 1)
     assert "signingConfig signingConfigs.release" in s, "anchor release{} not found"
     g.write_text(s, encoding="utf-8")
     print("build.gradle patched")
@@ -109,7 +109,7 @@ for perm in ("POST_NOTIFICATIONS", "SCHEDULE_EXACT_ALARM", "RECEIVE_BOOT_COMPLET
 mf.write_text(m, encoding="utf-8")
 print("notification icon + permissions ok")
 
-# ---------- نام برنامه (fa: خرج‌نگار، بقیه: SpendBook) ----------
+# ---------- نام برنامه (fa: دخل و خرج، بقیه: Dakhl o Kharj) ----------
 def strings(path, name):
     path.parent.mkdir(parents=True, exist_ok=True)
     s = path.read_text(encoding="utf-8") if path.exists() else '<?xml version="1.0" encoding="utf-8"?>\n<resources>\n</resources>\n'
