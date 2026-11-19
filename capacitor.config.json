@@ -1,7 +1,6 @@
 {
   "appId": "ir.dakhlokharj.app",
-  "appName": "Dakhl o Kharj",
-  "webDir": "docs",
+  "appId": "ir.roozstudio.dakhlokharj",  "webDir": "docs",
   "backgroundColor": "#fff8e1",
   "android": {
     "allowMixedContent": false
